@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="ar" dir="rtl"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>بوابة مسارات وأوقات استلام الكباتن</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --brand-dark: #00594c;
@@ -451,7 +450,7 @@
     }
   </style>
 </head>
-<body>
+<body class="admin-active">
 
   <header class="top-header">
     <div class="container header-flex">
@@ -461,12 +460,12 @@
         <p>نظام التحقق الفوري من مسارات الكباتن ومنع تعارض مواعيد التجار</p>
       </div>
       <div>
-        <button type="button" id="btnToggleAdmin" class="btn btn-accent">🔒 دخول المشرف (تعديل)</button>
+        <button type="button" id="btnToggleAdmin" class="btn btn-accent">🔓 وضع المشرف نشط</button>
       </div>
     </div>
   </header>
 
-  <div id="adminToolbar" class="admin-toolbar">
+  <div id="adminToolbar" class="admin-toolbar" style="display: block;">
     <div class="container admin-toolbar-flex">
       <div style="color: var(--brand-dark); font-weight: 800;">
         ✅ وضع المشرف مفعل — يمكنك إضافة كباتن وتعديل المواعيد وتحديد اللون الأحمر
@@ -483,17 +482,15 @@
   <main class="container">
     <section class="search-card">
       <div class="search-grid">
-        <input type="text" id="searchInput" class="input-field" placeholder="ابحث باسم المنطقة، التاجر، أو الكابتن (مثال: زيونة، كرادة، حي أور، البياع)..." />
-        <select id="captainSelect" class="select-field">
-          <option value="all">جميع الكباتن</option>
-        </select>
+        <input type="text" id="searchInput" class="input-field" placeholder="ابحث باسم المنطقة، التاجر، أو الكابتن (مثال: زيونة، كرادة، حي أور، البياع)...">
+        <select id="captainSelect" class="select-field"><option value="all">جميع الكباتن (12)</option><option value="0">علي محمد</option><option value="1">أحمد جوكر</option><option value="2">عبد الوهاب</option><option value="3">أحمد حسام</option><option value="4">علي أحمد حسن</option><option value="5">حسن ضياء</option><option value="6">جعفر محمد</option><option value="7">أنمار حسين</option><option value="8">عمر مهدي</option><option value="9">سجاد حمدان</option><option value="10">هشام سالم</option><option value="11">عبد القادر</option></select>
         <select id="statusSelect" class="select-field">
           <option value="all">جميع المواعيد</option>
           <option value="locked">الأوقات الحمراء الإلزامية فقط</option>
         </select>
       </div>
 
-      <div id="conflictBanner" class="conflict-banner"></div>
+      <div id="conflictBanner" class="conflict-banner" style="display: none;"></div>
 
       <div class="meta-bar">
         <div class="legend-group">
@@ -506,19 +503,19 @@
             <span><strong>الأخضر:</strong> مسار اعتيادي قابل للتنسيق.</span>
           </div>
         </div>
-        <div id="statsSummary" style="font-weight: 700; color: var(--brand-dark);"></div>
+        <div id="statsSummary" style="font-weight: 700; color: var(--brand-dark);">الكباتن: 12 | الأوقات الحمراء: 7</div>
       </div>
     </section>
 
-    <section id="cardsContainer" class="cards-grid"></section>
+    <section id="cardsContainer" class="cards-grid"><div class="captain-card"><div class="card-top"><div><div class="cap-name">علي محمد</div><div class="cap-route">كابتن استلام أبو غريب - كابتن استلام صباحي</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="0">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="0">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class="row-locked"><td><span class="time-pill">10:00 ص</span></td><td>جبران أبو غريب <span class="lock-tag">غير قابل للتداخل</span></td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#dc2626; color:#fff;" data-action="toggle-red" data-cap="0" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="0" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">12:00 م</span></td><td>ساحة الواثق</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">2:20 م</span></td><td>السعدون</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">3:00 م</span></td><td>الوزيرية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">5:00 م</span></td><td>رواجع شركة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">6:30 م</span></td><td>حي الجامعة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">7:00 م</span></td><td>غزالية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="6" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">8:00 م</span></td><td>أبو غريب</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="7" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="7" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="7" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">11:30 ص</span></td><td>الحرية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="8" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="8" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="8" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">12:30 ص</span></td><td>حي الجامعة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="9" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="9" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="9" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:30 ص</span></td><td>غزالية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="10" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="10" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="10" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">2:30 ص</span></td><td>حرية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="11" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="11" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="11" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">3:15 ص</span></td><td>تقفيلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="0" data-slot="12" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="0" data-slot="12" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="0" data-slot="12" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="0">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div><div class="captain-card"><div class="card-top"><div><div class="cap-name">أحمد جوكر</div><div class="cap-route">كابتن استلام الكرادة</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="1">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="1">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class="row-locked"><td><span class="time-pill">5:00 م</span></td><td>سحب رواجع <span class="lock-tag">غير قابل للتداخل</span></td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#dc2626; color:#fff;" data-action="toggle-red" data-cap="1" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="0" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">6:30 م</span></td><td>باب المعظم</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="1" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">7:00 م</span></td><td>شيخ عمر</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="1" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">7:30 م - 8:00 م</span></td><td>كرادة (سعدون / داخل)</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="1" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:00 م</span></td><td>جادرية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="1" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">10:00 م</span></td><td>كرادة خارج</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="1" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">10:45 م</span></td><td>مجمع مشن</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="1" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="6" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">11:15 م</span></td><td>جلود</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="1" data-slot="7" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="7" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="7" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">11:30 م</span></td><td>42</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="1" data-slot="8" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="8" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="8" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">12:00 ص</span></td><td>كرادة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="1" data-slot="9" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="9" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="9" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:00 ص</span></td><td>شورجة / متنبي / كراج الأمانة / الكفاح</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="1" data-slot="10" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="10" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="10" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">2:00 ص</span></td><td>تقفيلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="1" data-slot="11" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="1" data-slot="11" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="1" data-slot="11" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="1">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div><div class="captain-card"><div class="card-top"><div><div class="cap-name">عبد الوهاب</div><div class="cap-route">كابتن استلام الأعظمية</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="2">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="2">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class="row-locked"><td><span class="time-pill">3:30 م</span></td><td>سحب رواجع <span class="lock-tag">غير قابل للتداخل</span></td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#dc2626; color:#fff;" data-action="toggle-red" data-cap="2" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="2" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="2" data-slot="0" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">4:30 م</span></td><td>حي تونس</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="2" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="2" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="2" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">5:00 م</span></td><td>سبع أبكار</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="2" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="2" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="2" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">6:00 م</span></td><td>الكريعات</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="2" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="2" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="2" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">7:00 م</span></td><td>الأعظمية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="2" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="2" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="2" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:00 م</span></td><td>شارع المغرب</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="2" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="2" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="2" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">10:00 م</span></td><td>وزيرية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="2" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="2" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="2" data-slot="6" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">11:00 م</span></td><td>حي القاهرة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="2" data-slot="7" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="2" data-slot="7" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="2" data-slot="7" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:30 ص</span></td><td>تقفيلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="2" data-slot="8" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="2" data-slot="8" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="2" data-slot="8" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="2">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div><div class="captain-card"><div class="card-top"><div><div class="cap-name">أحمد حسام</div><div class="cap-route">كابتن استلام البياع والغزالية والشعلة</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="3">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="3">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class="row-locked"><td><span class="time-pill">4:30 م</span></td><td>بياع (وود سنتر) <span class="lock-tag">غير قابل للتداخل</span></td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#dc2626; color:#fff;" data-action="toggle-red" data-cap="3" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="3" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="3" data-slot="0" title="حذف">🗑️</button></td></tr><tr class="row-locked"><td><span class="time-pill">6:30 م</span></td><td>شركة سحب رواجع <span class="lock-tag">غير قابل للتداخل</span></td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#dc2626; color:#fff;" data-action="toggle-red" data-cap="3" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="3" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="3" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">8:00 م</span></td><td>جكوك</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="3" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="3" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="3" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:00 م</span></td><td>حي الجوادين</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="3" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="3" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="3" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:15 م</span></td><td>الرحمانية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="3" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="3" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="3" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:30 م</span></td><td>خطيب الزراعي</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="3" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="3" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="3" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:45 م</span></td><td>الهياكل</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="3" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="3" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="3" data-slot="6" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">10:00 م</span></td><td>غزالية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="3" data-slot="7" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="3" data-slot="7" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="3" data-slot="7" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">11:30 م</span></td><td>دولعي</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="3" data-slot="8" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="3" data-slot="8" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="3" data-slot="8" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">12:00 ص</span></td><td>مران (ساعة واحدة شعلة + دوانم)</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="3" data-slot="9" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="3" data-slot="9" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="3" data-slot="9" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:30 ص أو 2:00 ص</span></td><td>تقفيلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="3" data-slot="10" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="3" data-slot="10" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="3" data-slot="10" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="3">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div><div class="captain-card"><div class="card-top"><div><div class="cap-name">علي أحمد حسن</div><div class="cap-route">كابتن استلام البلديات وبغداد الجديدة</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="4">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="4">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class=""><td><span class="time-pill">4:45 م</span></td><td>سحب رواجع</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="4" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="4" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="4" data-slot="0" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">5:30 م</span></td><td>بلديات</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="4" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="4" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="4" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">6:15 م</span></td><td>الغدير</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="4" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="4" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="4" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">8:00 م</span></td><td>بغداد الجديدة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="4" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="4" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="4" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:30 م</span></td><td>الامين الثانية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="4" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="4" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="4" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">11:00 م</span></td><td>المشتل</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="4" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="4" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="4" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">12:00 ص</span></td><td>البلديات</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="4" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="4" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="4" data-slot="6" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">2:00 ص</span></td><td>كيارة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="4" data-slot="7" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="4" data-slot="7" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="4" data-slot="7" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">2:30 ص أو 3:00 ص</span></td><td>تقفيلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="4" data-slot="8" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="4" data-slot="8" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="4" data-slot="8" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="4">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div><div class="captain-card"><div class="card-top"><div><div class="cap-name">حسن ضياء</div><div class="cap-route">كابتن استلام زيونة وشارع فلسطين</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="5">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="5">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class=""><td><span class="time-pill">6:00 م</span></td><td>سحب رواجع</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="5" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="5" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="5" data-slot="0" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">7:00 م</span></td><td>شارع الربيعي</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="5" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="5" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="5" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">7:30 م</span></td><td>زيونة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="5" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="5" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="5" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:30 م</span></td><td>شارع فلسطين</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="5" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="5" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="5" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">12:00 ص</span></td><td>طالبية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="5" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="5" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="5" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:00 ص</span></td><td>حي أور</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="5" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="5" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="5" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:30 ص</span></td><td>شارع فلسطين</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="5" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="5" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="5" data-slot="6" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">2:00 ص أو 2:30 ص</span></td><td>تقفيلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="5" data-slot="7" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="5" data-slot="7" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="5" data-slot="7" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="5">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div><div class="captain-card"><div class="card-top"><div><div class="cap-name">جعفر محمد</div><div class="cap-route">كابتن استلام الطالبية والشعب والحسينية</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="6">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="6">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class=""><td><span class="time-pill">4:30 م</span></td><td>سحب رواجع شركة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="0" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">5:00 م</span></td><td>طالبية / بنوك</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">6:00 م</span></td><td>حي أور</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">7:00 م</span></td><td>شعب</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">8:00 م</span></td><td>الثعالية / بوب الشام</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">8:30 م</span></td><td>الحسينية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">8:30 م</span></td><td>الجزيرة الفحامة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="6" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:30 م</span></td><td>كميرة الحريرات</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="7" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="7" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="7" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:30 م - 10:30 م</span></td><td>السريدات / حي البساتين</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="8" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="8" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="8" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">11:30 م</span></td><td>النصر / شارع التجار / شارع الأسواق</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="9" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="9" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="9" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">12:00 ص</span></td><td>شارع عدن / شارع الصحة / العسكري</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="10" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="10" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="10" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:00 ص</span></td><td>حي أور / بنوك / طالبية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="11" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="11" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="11" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:30 ص</span></td><td>تقفيلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="6" data-slot="12" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="6" data-slot="12" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="6" data-slot="12" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="6">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div><div class="captain-card"><div class="card-top"><div><div class="cap-name">أنمار حسين</div><div class="cap-route">كابتن استلام المحمودية والدورة</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="7">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="7">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class=""><td><span class="time-pill">5:00 م</span></td><td>المحمودية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="7" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="7" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="7" data-slot="0" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">7:00 م</span></td><td>القصر الأوسط</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="7" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="7" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="7" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:00 م</span></td><td>ناحية الرشيد</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="7" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="7" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="7" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:30 م - 11:00 م</span></td><td>جكوك</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="7" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="7" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="7" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">12:00 ص</span></td><td>الدورة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="7" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="7" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="7" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:00 ص أو 1:30 ص</span></td><td>تقفيلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="7" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="7" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="7" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">2:00 ص</span></td><td>استلام رواجع</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="7" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="7" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="7" data-slot="6" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="7">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div><div class="captain-card"><div class="card-top"><div><div class="cap-name">عمر مهدي</div><div class="cap-route">كابتن استلام السيدية والإعلام وحي العامل</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="8">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="8">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class=""><td><span class="time-pill">5:30 م</span></td><td>سحب رواجع</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="8" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="8" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="8" data-slot="0" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">7:00 م</span></td><td>شهداء الحسينية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="8" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="8" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="8" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">7:30 م</span></td><td>كفاءات السيدية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="8" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="8" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="8" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">8:00 م</span></td><td>الإعلام</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="8" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="8" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="8" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:00 م أو 9:30 م</span></td><td>السيدية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="8" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="8" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="8" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">10:00 م إلى 11:00 م</span></td><td>بياع / حي الرسالة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="8" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="8" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="8" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">12:30 ص إلى 1:00 ص</span></td><td>كفاءات السيدية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="8" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="8" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="8" data-slot="6" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:30 ص</span></td><td>دعم</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="8" data-slot="7" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="8" data-slot="7" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="8" data-slot="7" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:50 ص</span></td><td>حي العامل</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="8" data-slot="8" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="8" data-slot="8" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="8" data-slot="8" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">2:15 ص</span></td><td>تقفيلة + دعم ليمونة بيج</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="8" data-slot="9" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="8" data-slot="9" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="8" data-slot="9" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="8">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div><div class="captain-card"><div class="card-top"><div><div class="cap-name">سجاد حمدان</div><div class="cap-route">كابتن استلام حي الحسين والمواصلات والجهاد</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="9">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="9">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class=""><td><span class="time-pill">5:00 م</span></td><td>سحب رواجع</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="9" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="9" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="9" data-slot="0" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">6:30 م</span></td><td>حي الحسين</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="9" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="9" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="9" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">8:00 م</span></td><td>شهداء البياع</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="9" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="9" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="9" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">9:00 م</span></td><td>شرطة الرابعة + المواصلات</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="9" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="9" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="9" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">10:00 م</span></td><td>حي العامل</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="9" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="9" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="9" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">11:00 م</span></td><td>حي الجهاد</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="9" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="9" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="9" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:00 ص</span></td><td>المواصلات + الشاعلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="9" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="9" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="9" data-slot="6" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">1:30 ص أو 2:00 ص</span></td><td>تقفيلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="9" data-slot="7" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="9" data-slot="7" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="9" data-slot="7" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="9">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div><div class="captain-card"><div class="card-top"><div><div class="cap-name">هشام سالم</div><div class="cap-route">كابتن استلام بسماية</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="10">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="10">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class="row-locked"><td><span class="time-pill">04:00 م</span></td><td>استلام بيجات <span class="lock-tag">غير قابل للتداخل</span></td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#dc2626; color:#fff;" data-action="toggle-red" data-cap="10" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="10" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="10" data-slot="0" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">04:00 م</span></td><td>استلام رواجع</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="10" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="10" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="10" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">04:30 م</span></td><td>الرسالة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="10" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="10" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="10" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">05:00 م</span></td><td>حسين الموحدة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="10" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="10" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="10" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">06:45 م</span></td><td>بسماية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="10" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="10" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="10" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">07:45 م</span></td><td>جرف النداف</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="10" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="10" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="10" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">08:30 م</span></td><td>جسر ديالى</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="10" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="10" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="10" data-slot="6" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">09:30 م</span></td><td>الزعفرانية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="10" data-slot="7" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="10" data-slot="7" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="10" data-slot="7" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">01:00 ص</span></td><td>التقفيلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="10" data-slot="8" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="10" data-slot="8" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="10" data-slot="8" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="10">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div><div class="captain-card"><div class="card-top"><div><div class="cap-name">عبد القادر</div><div class="cap-route">كابتن استلام - كابتن استلام صباحي</div></div><div class="admin-only" style="gap:6px;"><button type="button" class="btn btn-accent btn-sm" data-action="edit-cap" data-cap="11">تعديل</button><button type="button" class="btn btn-danger btn-sm" data-action="del-cap" data-cap="11">حذف</button></div></div><div class="card-table-wrap"><table><thead><tr><th style="width:32%;">الوقت</th><th>المنطقة / التاجر</th><th class="admin-only">إجراءات</th></tr></thead><tbody><tr class="row-locked"><td><span class="time-pill">11:00 ص</span></td><td>سحب رواجع <span class="lock-tag">غير قابل للتداخل</span></td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#dc2626; color:#fff;" data-action="toggle-red" data-cap="11" data-slot="0" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="0" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="0" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">01:30 م</span></td><td>المنصور</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="1" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="1" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="1" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">02:30 م</span></td><td>حي حطين</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="2" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="2" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="2" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">03:30 م</span></td><td>شالجية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="3" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="3" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="3" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">04:30 م</span></td><td>شالجية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="4" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="4" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="4" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">05:00 م</span></td><td>حي العدل</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="5" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="5" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="5" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">06:30 م</span></td><td>حي الجامعة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="6" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="6" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="6" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">08:00 م</span></td><td>حي حطين</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="7" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="7" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="7" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">09:30 م</span></td><td>العامرية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="8" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="8" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="8" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">11:30 م</span></td><td>حي الخضراء</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="9" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="9" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="9" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">12:00 ص</span></td><td>الغزالية</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="10" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="10" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="10" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">01:00 ص</span></td><td>بيجات متفرقة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="11" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="11" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="11" title="حذف">🗑️</button></td></tr><tr class=""><td><span class="time-pill">01:30 ص</span></td><td>التقفيلة</td><td class="admin-only" style="gap:4px; white-space:nowrap;"><button type="button" class="btn btn-sm" style="background:#e5e7eb; color:#111;" data-action="toggle-red" data-cap="11" data-slot="12" title="تبديل اللون الأحمر">🔴</button><button type="button" class="btn btn-outline btn-sm" data-action="edit-slot" data-cap="11" data-slot="12" title="تعديل">✏️</button><button type="button" class="btn btn-outline btn-sm" data-action="del-slot" data-cap="11" data-slot="12" title="حذف">🗑️</button></td></tr></tbody></table></div><div class="card-bottom admin-only" style="width:100%;"><button type="button" class="btn btn-primary btn-sm" style="width:100%;" data-action="add-slot" data-cap="11">+ إضافة موعد / تاجر جديد لهذا الكابتن</button></div></div></section>
   </main>
 
-  <div id="modalLogin" class="modal-backdrop">
+  <div id="modalLogin" class="modal-backdrop" style="display: none;">
     <div class="modal-card">
       <h3>تسجيل دخول المشرف</h3>
       <div class="form-row">
         <label>كلمة المرور (الافتراضية: 1234)</label>
-        <input type="password" id="inputAdminPass" class="input-field" placeholder="أدخل كلمة المرور..." />
+        <input type="password" id="inputAdminPass" class="input-field" placeholder="أدخل كلمة المرور...">
       </div>
       <div id="loginErrMsg" style="color: var(--red-main); font-size: 0.85rem; font-weight: 700; display: none; margin-bottom: 10px;">
         كلمة المرور غير صحيحة، حاول مرة أخرى.
@@ -530,17 +527,17 @@
     </div>
   </div>
 
-  <div id="modalCaptain" class="modal-backdrop">
+  <div id="modalCaptain" class="modal-backdrop" style="display: none;">
     <div class="modal-card">
       <h3 id="modalCaptainTitle">إضافة كابتن جديد</h3>
-      <input type="hidden" id="editCapIdx" value="-1" />
+      <input type="hidden" id="editCapIdx" value="-1">
       <div class="form-row">
         <label>اسم الكابتن</label>
-        <input type="text" id="inputCapName" class="input-field" placeholder="مثال: علي محمد" />
+        <input type="text" id="inputCapName" class="input-field" placeholder="مثال: علي محمد">
       </div>
       <div class="form-row">
         <label>المسار العام أو المناطق الرئيسية</label>
-        <input type="text" id="inputCapRoute" class="input-field" placeholder="مثال: مسار الكرخ / أبو غريب" />
+        <input type="text" id="inputCapRoute" class="input-field" placeholder="مثال: مسار الكرخ / أبو غريب">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline" data-close="modalCaptain">إلغاء</button>
@@ -549,21 +546,21 @@
     </div>
   </div>
 
-  <div id="modalSlot" class="modal-backdrop">
+  <div id="modalSlot" class="modal-backdrop" style="display: none;">
     <div class="modal-card">
-      <h3 id="modalSlotTitle">إضافة موعد ومنطقة</h3>
-      <input type="hidden" id="slotCapIdx" value="-1" />
-      <input type="hidden" id="slotItemIdx" value="-1" />
+      <h3 id="modalSlotTitle">إضافة موعد للكابتن: عبد القادر</h3>
+      <input type="hidden" id="slotCapIdx" value="11">
+      <input type="hidden" id="slotItemIdx" value="-1">
       <div class="form-row">
         <label>الوقت المحدد</label>
-        <input type="text" id="inputSlotTime" class="input-field" placeholder="مثال: 7:30 م" />
+        <input type="text" id="inputSlotTime" class="input-field" placeholder="مثال: 7:30 م">
       </div>
       <div class="form-row">
         <label>المنطقة / التاجر / الملاحظات</label>
-        <input type="text" id="inputSlotArea" class="input-field" placeholder="مثال: زيونة - تاجر محدد" />
+        <input type="text" id="inputSlotArea" class="input-field" placeholder="مثال: زيونة - تاجر محدد">
       </div>
       <label class="check-row">
-        <input type="checkbox" id="inputSlotLocked" />
+        <input type="checkbox" id="inputSlotLocked">
         <span>تحديد باللون الأحمر (موعد إلزامي غير قابل للتداخل)</span>
       </label>
       <div class="modal-footer">
@@ -578,167 +575,689 @@
     var isAdmin = false;
 
     var DEFAULT_DATA = [
+  {
+    "name": "علي محمد",
+    "route": "كابتن استلام أبو غريب - كابتن استلام صباحي",
+    "slots": [
       {
-        name: "علي محمد",
-        route: "مندوب استلام أبو غريب والصباحي 11",
-        slots: [
-          { time: "10:00 ص", area: "جيوان أبو غريب", locked: false },
-          { time: "12:00 م", area: "ساحة الواثق", locked: false },
-          { time: "2:20 م", area: "السعدون", locked: false },
-          { time: "3:00 م", area: "الوزيرية + بيجان", locked: false },
-          { time: "5:00 م", area: "رواجع شركة", locked: false },
-          { time: "6:30 م", area: "حي الجامعة", locked: false },
-          { time: "7:00 م", area: "غزالية", locked: false },
-          { time: "8:00 م", area: "أبو غريب (1)", locked: false },
-          { time: "12:30 ص", area: "الحرية", locked: false },
-          { time: "12:30 ص", area: "حي الجامعة", locked: false },
-          { time: "1:30 ص", area: "غزالية", locked: false },
-          { time: "2:00 ص", area: "حرية", locked: false },
-          { time: "2:15 ص", area: "تقفيلة (4)", locked: false }
-        ]
+        "time": "10:00 ص",
+        "area": "جبران أبو غريب",
+        "locked": true
       },
       {
-        name: "أحمد جوكر",
-        route: "مسار الرصافة المركزي / الكرادة",
-        slots: [
-          { time: "5:00 م", area: "سحب رواجع", locked: false },
-          { time: "6:30 م", area: "باب المعظم", locked: false },
-          { time: "7:00 م", area: "شيخ عمر", locked: false },
-          { time: "7:30 م - 8:00 م", area: "كرادة (سعدون / داخل)", locked: false },
-          { time: "9:00 م", area: "جادرية", locked: false },
-          { time: "10:00 م", area: "كرادة خارج", locked: false },
-          { time: "10:45 م", area: "مجمع مشن", locked: false },
-          { time: "11:15 م", area: "جلود", locked: false },
-          { time: "11:45 م", area: "42", locked: false },
-          { time: "12:00 ص", area: "كرادة", locked: false },
-          { time: "1:00 ص", area: "شورجة / متنبي / كراج الأمانة / الكفاح", locked: false },
-          { time: "2:00 ص", area: "تقفيلة", locked: false }
-        ]
+        "time": "12:00 م",
+        "area": "ساحة الواثق",
+        "locked": false
       },
       {
-        name: "عبد الوهاب",
-        route: "مسار الأعظمية وشارع المغرب",
-        slots: [
-          { time: "3:30 م", area: "سحب رواجع", locked: false },
-          { time: "4:30 م", area: "حي تونس", locked: false },
-          { time: "5:00 م", area: "سبع أبكار", locked: false },
-          { time: "7:00 م", area: "الكريعات", locked: false },
-          { time: "8:00 م", area: "الأعظمية", locked: false },
-          { time: "9:00 م", area: "شارع المغرب", locked: false },
-          { time: "10:00 م", area: "وزيرية", locked: false },
-          { time: "11:00 م", area: "حي القاهرة", locked: false },
-          { time: "1:30 ص", area: "تقفيلة", locked: false }
-        ]
+        "time": "2:20 م",
+        "area": "السعدون",
+        "locked": false
       },
       {
-        name: "أحمد حسام",
-        route: "مسار البياع والغزالية والشعلة",
-        slots: [
-          { time: "4:30 م", area: "بياع + دمشق", locked: false },
-          { time: "6:30 م", area: "شركة سحب رواجع", locked: false },
-          { time: "8:00 م", area: "جكوك", locked: false },
-          { time: "9:00 م", area: "حي الجوادين", locked: false },
-          { time: "9:15 م", area: "الرحمانية", locked: false },
-          { time: "9:30 م", area: "خطيب الزراعي", locked: false },
-          { time: "9:45 م", area: "الهياكل", locked: false },
-          { time: "10:00 م", area: "غزالية", locked: false },
-          { time: "11:30 م", area: "دولعي", locked: false },
-          { time: "12:00 ص", area: "مران (ساعة واحدة شعلة + دوانم)", locked: false },
-          { time: "1:30 ص أو 2:00 ص", area: "تقفيلة", locked: false }
-        ]
+        "time": "3:00 م",
+        "area": "الوزيرية",
+        "locked": false
       },
       {
-        name: "علي أحمد حسن",
-        route: "مسار البلديات وبغداد الجديدة",
-        slots: [
-          { time: "4:45 م", area: "سحب رواجع", locked: false },
-          { time: "5:30 م", area: "بلديات", locked: false },
-          { time: "6:15 م", area: "حي أور", locked: false },
-          { time: "8:00 م", area: "بغداد الجديدة", locked: false },
-          { time: "9:30 م", area: "التأميم الثانية", locked: false },
-          { time: "11:00 م", area: "المشتل", locked: false },
-          { time: "12:00 ص", area: "البلديات", locked: false },
-          { time: "2:00 ص", area: "كمارة", locked: false },
-          { time: "2:30 ص أو 3:00 ص", area: "تقفيلة", locked: false }
-        ]
+        "time": "5:00 م",
+        "area": "رواجع شركة",
+        "locked": false
       },
       {
-        name: "حسن ضياء",
-        route: "مسار زيونة وشارع فلسطين",
-        slots: [
-          { time: "6:00 م", area: "سحب رواجع", locked: false },
-          { time: "7:00 م", area: "شارع الظلال / شارع المطبعي", locked: false },
-          { time: "7:30 م", area: "زيونة", locked: false },
-          { time: "9:30 م", area: "شارع فلسطين", locked: false },
-          { time: "12:00 ص", area: "طالبية", locked: false },
-          { time: "1:00 ص", area: "حي أور", locked: false },
-          { time: "1:30 ص", area: "شارع فلسطين", locked: false },
-          { time: "2:00 ص أو 2:30 ص", area: "تقفيلة", locked: false }
-        ]
+        "time": "6:30 م",
+        "area": "حي الجامعة",
+        "locked": false
       },
       {
-        name: "جعفر محمد",
-        route: "مسار الطالبية والشعب والحسينية",
-        slots: [
-          { time: "4:30 م", area: "سحب رواجع شركة", locked: false },
-          { time: "5:00 م", area: "طالبية / بنوك", locked: false },
-          { time: "6:00 م", area: "حي أور", locked: false },
-          { time: "7:00 م", area: "شعب / س.ق", locked: false },
-          { time: "8:00 م", area: "الثعالية / بوب الشام", locked: false },
-          { time: "8:30 م", area: "الحسينية", locked: false },
-          { time: "8:30 م", area: "الجزيرة الفحامة", locked: false },
-          { time: "9:30 م", area: "كميرة الحريرات", locked: false },
-          { time: "9:30 م", area: "السريدات / حي البساتين", locked: false },
-          { time: "11:30 م", area: "النصر / شارع التجار / شارع الأسواق", locked: false },
-          { time: "12:00 ص", area: "شارع عدن / شارع الصحة / العسكري", locked: false },
-          { time: "1:00 ص", area: "حي أور / بنوك / طالبية", locked: false },
-          { time: "1:30 ص", area: "تقفيلة", locked: false }
-        ]
+        "time": "7:00 م",
+        "area": "غزالية",
+        "locked": false
       },
       {
-        name: "أنمار حسين",
-        route: "مسار المحمودية والدورة",
-        slots: [
-          { time: "5:00 م", area: "المحمودية", locked: false },
-          { time: "7:00 م", area: "القصر الأوسط", locked: false },
-          { time: "9:00 م", area: "ناحية الرشيد", locked: false },
-          { time: "9:30 م - 11:00 م", area: "جكوك", locked: false },
-          { time: "12:00 ص", area: "الدورة", locked: false },
-          { time: "1:00 ص أو 1:30 ص", area: "تقفيلة", locked: false },
-          { time: "2:00 ص", area: "استلام رواجع", locked: false }
-        ]
+        "time": "8:00 م",
+        "area": "أبو غريب",
+        "locked": false
       },
       {
-        name: "كرم مصري",
-        route: "مسار السيدية والإعلام وحي العامل",
-        slots: [
-          { time: "5:30 م", area: "سحب رواجع", locked: false },
-          { time: "7:00 م", area: "شهداء السيدية", locked: false },
-          { time: "7:30 م", area: "كفاءات السيدية", locked: false },
-          { time: "8:00 م", area: "الإعلام", locked: false },
-          { time: "9:00 م أو 9:30 م", area: "السيدية", locked: false },
-          { time: "10:00 م إلى 11:00 م", area: "بياع / حي الرسالة", locked: false },
-          { time: "12:30 ص إلى 1:00 ص", area: "كفاءات السيدية", locked: false },
-          { time: "1:30 ص", area: "دعم", locked: false },
-          { time: "1:50 ص", area: "حي العامل", locked: false },
-          { time: "2:15 ص", area: "تقفيلة + دعم ليمونة بيع", locked: false }
-        ]
+        "time": "11:30 ص",
+        "area": "الحرية",
+        "locked": false
       },
       {
-        name: "سجاد حموده",
-        route: "مسار حي الحسين والمواصلات والجهاد",
-        slots: [
-          { time: "5:00 م", area: "سحب رواجع", locked: false },
-          { time: "6:30 م", area: "حي الحسين", locked: false },
-          { time: "8:00 م", area: "شهداء البياع", locked: false },
-          { time: "9:00 م", area: "شرطة الرابعة + المواصلات", locked: false },
-          { time: "10:00 م", area: "حي العامل", locked: false },
-          { time: "11:00 م", area: "حي الجهاد", locked: false },
-          { time: "1:00 ص", area: "المواصلات + الشاعلة", locked: false },
-          { time: "1:30 ص أو 2:00 ص", area: "تقفيلة", locked: false }
-        ]
+        "time": "12:30 ص",
+        "area": "حي الجامعة",
+        "locked": false
+      },
+      {
+        "time": "1:30 ص",
+        "area": "غزالية",
+        "locked": false
+      },
+      {
+        "time": "2:30 ص",
+        "area": "حرية",
+        "locked": false
+      },
+      {
+        "time": "3:15 ص",
+        "area": "تقفيلة",
+        "locked": false
       }
-    ];
+    ]
+  },
+  {
+    "name": "أحمد جوكر",
+    "route": "كابتن استلام الكرادة",
+    "slots": [
+      {
+        "time": "5:00 م",
+        "area": "سحب رواجع",
+        "locked": true
+      },
+      {
+        "time": "6:30 م",
+        "area": "باب المعظم",
+        "locked": false
+      },
+      {
+        "time": "7:00 م",
+        "area": "شيخ عمر",
+        "locked": false
+      },
+      {
+        "time": "7:30 م - 8:00 م",
+        "area": "كرادة (سعدون / داخل)",
+        "locked": false
+      },
+      {
+        "time": "9:00 م",
+        "area": "جادرية",
+        "locked": false
+      },
+      {
+        "time": "10:00 م",
+        "area": "كرادة خارج",
+        "locked": false
+      },
+      {
+        "time": "10:45 م",
+        "area": "مجمع مشن",
+        "locked": false
+      },
+      {
+        "time": "11:15 م",
+        "area": "جلود",
+        "locked": false
+      },
+      {
+        "time": "11:30 م",
+        "area": "42",
+        "locked": false
+      },
+      {
+        "time": "12:00 ص",
+        "area": "كرادة",
+        "locked": false
+      },
+      {
+        "time": "1:00 ص",
+        "area": "شورجة / متنبي / كراج الأمانة / الكفاح",
+        "locked": false
+      },
+      {
+        "time": "2:00 ص",
+        "area": "تقفيلة",
+        "locked": false
+      }
+    ]
+  },
+  {
+    "name": "عبد الوهاب",
+    "route": "كابتن استلام الأعظمية",
+    "slots": [
+      {
+        "time": "3:30 م",
+        "area": "سحب رواجع",
+        "locked": true
+      },
+      {
+        "time": "4:30 م",
+        "area": "حي تونس",
+        "locked": false
+      },
+      {
+        "time": "5:00 م",
+        "area": "سبع أبكار",
+        "locked": false
+      },
+      {
+        "time": "6:00 م",
+        "area": "الكريعات",
+        "locked": false
+      },
+      {
+        "time": "7:00 م",
+        "area": "الأعظمية",
+        "locked": false
+      },
+      {
+        "time": "9:00 م",
+        "area": "شارع المغرب",
+        "locked": false
+      },
+      {
+        "time": "10:00 م",
+        "area": "وزيرية",
+        "locked": false
+      },
+      {
+        "time": "11:00 م",
+        "area": "حي القاهرة",
+        "locked": false
+      },
+      {
+        "time": "1:30 ص",
+        "area": "تقفيلة",
+        "locked": false
+      }
+    ]
+  },
+  {
+    "name": "أحمد حسام",
+    "route": "كابتن استلام البياع والغزالية والشعلة",
+    "slots": [
+      {
+        "time": "4:30 م",
+        "area": "بياع (وود سنتر)",
+        "locked": true
+      },
+      {
+        "time": "6:30 م",
+        "area": "شركة سحب رواجع",
+        "locked": true
+      },
+      {
+        "time": "8:00 م",
+        "area": "جكوك",
+        "locked": false
+      },
+      {
+        "time": "9:00 م",
+        "area": "حي الجوادين",
+        "locked": false
+      },
+      {
+        "time": "9:15 م",
+        "area": "الرحمانية",
+        "locked": false
+      },
+      {
+        "time": "9:30 م",
+        "area": "خطيب الزراعي",
+        "locked": false
+      },
+      {
+        "time": "9:45 م",
+        "area": "الهياكل",
+        "locked": false
+      },
+      {
+        "time": "10:00 م",
+        "area": "غزالية",
+        "locked": false
+      },
+      {
+        "time": "11:30 م",
+        "area": "دولعي",
+        "locked": false
+      },
+      {
+        "time": "12:00 ص",
+        "area": "مران (ساعة واحدة شعلة + دوانم)",
+        "locked": false
+      },
+      {
+        "time": "1:30 ص أو 2:00 ص",
+        "area": "تقفيلة",
+        "locked": false
+      }
+    ]
+  },
+  {
+    "name": "علي أحمد حسن",
+    "route": "كابتن استلام البلديات وبغداد الجديدة",
+    "slots": [
+      {
+        "time": "4:45 م",
+        "area": "سحب رواجع",
+        "locked": false
+      },
+      {
+        "time": "5:30 م",
+        "area": "بلديات",
+        "locked": false
+      },
+      {
+        "time": "6:15 م",
+        "area": "الغدير",
+        "locked": false
+      },
+      {
+        "time": "8:00 م",
+        "area": "بغداد الجديدة",
+        "locked": false
+      },
+      {
+        "time": "9:30 م",
+        "area": "الامين الثانية",
+        "locked": false
+      },
+      {
+        "time": "11:00 م",
+        "area": "المشتل",
+        "locked": false
+      },
+      {
+        "time": "12:00 ص",
+        "area": "البلديات",
+        "locked": false
+      },
+      {
+        "time": "2:00 ص",
+        "area": "كيارة",
+        "locked": false
+      },
+      {
+        "time": "2:30 ص أو 3:00 ص",
+        "area": "تقفيلة",
+        "locked": false
+      }
+    ]
+  },
+  {
+    "name": "حسن ضياء",
+    "route": "كابتن استلام زيونة وشارع فلسطين",
+    "slots": [
+      {
+        "time": "6:00 م",
+        "area": "سحب رواجع",
+        "locked": false
+      },
+      {
+        "time": "7:00 م",
+        "area": "شارع الربيعي",
+        "locked": false
+      },
+      {
+        "time": "7:30 م",
+        "area": "زيونة",
+        "locked": false
+      },
+      {
+        "time": "9:30 م",
+        "area": "شارع فلسطين",
+        "locked": false
+      },
+      {
+        "time": "12:00 ص",
+        "area": "طالبية",
+        "locked": false
+      },
+      {
+        "time": "1:00 ص",
+        "area": "حي أور",
+        "locked": false
+      },
+      {
+        "time": "1:30 ص",
+        "area": "شارع فلسطين",
+        "locked": false
+      },
+      {
+        "time": "2:00 ص أو 2:30 ص",
+        "area": "تقفيلة",
+        "locked": false
+      }
+    ]
+  },
+  {
+    "name": "جعفر محمد",
+    "route": "كابتن استلام الطالبية والشعب والحسينية",
+    "slots": [
+      {
+        "time": "4:30 م",
+        "area": "سحب رواجع شركة",
+        "locked": false
+      },
+      {
+        "time": "5:00 م",
+        "area": "طالبية / بنوك",
+        "locked": false
+      },
+      {
+        "time": "6:00 م",
+        "area": "حي أور",
+        "locked": false
+      },
+      {
+        "time": "7:00 م",
+        "area": "شعب",
+        "locked": false
+      },
+      {
+        "time": "8:00 م",
+        "area": "الثعالية / بوب الشام",
+        "locked": false
+      },
+      {
+        "time": "8:30 م",
+        "area": "الحسينية",
+        "locked": false
+      },
+      {
+        "time": "8:30 م",
+        "area": "الجزيرة الفحامة",
+        "locked": false
+      },
+      {
+        "time": "9:30 م",
+        "area": "كميرة الحريرات",
+        "locked": false
+      },
+      {
+        "time": "9:30 م - 10:30 م",
+        "area": "السريدات / حي البساتين",
+        "locked": false
+      },
+      {
+        "time": "11:30 م",
+        "area": "النصر / شارع التجار / شارع الأسواق",
+        "locked": false
+      },
+      {
+        "time": "12:00 ص",
+        "area": "شارع عدن / شارع الصحة / العسكري",
+        "locked": false
+      },
+      {
+        "time": "1:00 ص",
+        "area": "حي أور / بنوك / طالبية",
+        "locked": false
+      },
+      {
+        "time": "1:30 ص",
+        "area": "تقفيلة",
+        "locked": false
+      }
+    ]
+  },
+  {
+    "name": "أنمار حسين",
+    "route": "كابتن استلام المحمودية والدورة",
+    "slots": [
+      {
+        "time": "5:00 م",
+        "area": "المحمودية",
+        "locked": false
+      },
+      {
+        "time": "7:00 م",
+        "area": "القصر الأوسط",
+        "locked": false
+      },
+      {
+        "time": "9:00 م",
+        "area": "ناحية الرشيد",
+        "locked": false
+      },
+      {
+        "time": "9:30 م - 11:00 م",
+        "area": "جكوك",
+        "locked": false
+      },
+      {
+        "time": "12:00 ص",
+        "area": "الدورة",
+        "locked": false
+      },
+      {
+        "time": "1:00 ص أو 1:30 ص",
+        "area": "تقفيلة",
+        "locked": false
+      },
+      {
+        "time": "2:00 ص",
+        "area": "استلام رواجع",
+        "locked": false
+      }
+    ]
+  },
+  {
+    "name": "عمر مهدي",
+    "route": "كابتن استلام السيدية والإعلام وحي العامل",
+    "slots": [
+      {
+        "time": "5:30 م",
+        "area": "سحب رواجع",
+        "locked": false
+      },
+      {
+        "time": "7:00 م",
+        "area": "شهداء الحسينية",
+        "locked": false
+      },
+      {
+        "time": "7:30 م",
+        "area": "كفاءات السيدية",
+        "locked": false
+      },
+      {
+        "time": "8:00 م",
+        "area": "الإعلام",
+        "locked": false
+      },
+      {
+        "time": "9:00 م أو 9:30 م",
+        "area": "السيدية",
+        "locked": false
+      },
+      {
+        "time": "10:00 م إلى 11:00 م",
+        "area": "بياع / حي الرسالة",
+        "locked": false
+      },
+      {
+        "time": "12:30 ص إلى 1:00 ص",
+        "area": "كفاءات السيدية",
+        "locked": false
+      },
+      {
+        "time": "1:30 ص",
+        "area": "دعم",
+        "locked": false
+      },
+      {
+        "time": "1:50 ص",
+        "area": "حي العامل",
+        "locked": false
+      },
+      {
+        "time": "2:15 ص",
+        "area": "تقفيلة + دعم ليمونة بيج",
+        "locked": false
+      }
+    ]
+  },
+  {
+    "name": "سجاد حمدان",
+    "route": "كابتن استلام حي الحسين والمواصلات والجهاد",
+    "slots": [
+      {
+        "time": "5:00 م",
+        "area": "سحب رواجع",
+        "locked": false
+      },
+      {
+        "time": "6:30 م",
+        "area": "حي الحسين",
+        "locked": false
+      },
+      {
+        "time": "8:00 م",
+        "area": "شهداء البياع",
+        "locked": false
+      },
+      {
+        "time": "9:00 م",
+        "area": "شرطة الرابعة + المواصلات",
+        "locked": false
+      },
+      {
+        "time": "10:00 م",
+        "area": "حي العامل",
+        "locked": false
+      },
+      {
+        "time": "11:00 م",
+        "area": "حي الجهاد",
+        "locked": false
+      },
+      {
+        "time": "1:00 ص",
+        "area": "المواصلات + الشاعلة",
+        "locked": false
+      },
+      {
+        "time": "1:30 ص أو 2:00 ص",
+        "area": "تقفيلة",
+        "locked": false
+      }
+    ]
+  },
+  {
+    "name": "هشام سالم",
+    "route": "كابتن استلام بسماية",
+    "slots": [
+      {
+        "time": "04:00 م",
+        "area": "استلام بيجات",
+        "locked": true
+      },
+      {
+        "time": "04:00 م",
+        "area": "استلام رواجع",
+        "locked": false
+      },
+      {
+        "time": "04:30 م",
+        "area": "الرسالة",
+        "locked": false
+      },
+      {
+        "time": "05:00 م",
+        "area": "حسين الموحدة",
+        "locked": false
+      },
+      {
+        "time": "06:45 م",
+        "area": "بسماية",
+        "locked": false
+      },
+      {
+        "time": "07:45 م",
+        "area": "جرف النداف",
+        "locked": false
+      },
+      {
+        "time": "08:30 م",
+        "area": "جسر ديالى",
+        "locked": false
+      },
+      {
+        "time": "09:30 م",
+        "area": "الزعفرانية",
+        "locked": false
+      },
+      {
+        "time": "01:00 ص",
+        "area": "التقفيلة",
+        "locked": false
+      }
+    ]
+  },
+  {
+    "name": "عبد القادر",
+    "route": "كابتن استلام - كابتن استلام صباحي",
+    "slots": [
+      {
+        "time": "11:00 ص",
+        "area": "سحب رواجع",
+        "locked": true
+      },
+      {
+        "time": "01:30 م",
+        "area": "المنصور",
+        "locked": false
+      },
+      {
+        "time": "02:30 م",
+        "area": "حي حطين",
+        "locked": false
+      },
+      {
+        "time": "03:30 م",
+        "area": "شالجية",
+        "locked": false
+      },
+      {
+        "time": "04:30 م",
+        "area": "شالجية",
+        "locked": false
+      },
+      {
+        "time": "05:00 م",
+        "area": "حي العدل",
+        "locked": false
+      },
+      {
+        "time": "06:30 م",
+        "area": "حي الجامعة",
+        "locked": false
+      },
+      {
+        "time": "08:00 م",
+        "area": "حي حطين",
+        "locked": false
+      },
+      {
+        "time": "09:30 م",
+        "area": "العامرية",
+        "locked": false
+      },
+      {
+        "time": "11:30 م",
+        "area": "حي الخضراء",
+        "locked": false
+      },
+      {
+        "time": "12:00 ص",
+        "area": "الغزالية",
+        "locked": false
+      },
+      {
+        "time": "01:00 ص",
+        "area": "بيجات متفرقة",
+        "locked": false
+      },
+      {
+        "time": "01:30 ص",
+        "area": "التقفيلة",
+        "locked": false
+      }
+    ]
+  }
+];
 
     var captainsData = [];
     try {
@@ -1052,5 +1571,6 @@
 
     renderBoard();
   </script>
-</body>
-</html>
+
+
+</body></html>
