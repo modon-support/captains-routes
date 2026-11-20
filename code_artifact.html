@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل مسارات وأوقات استلام الكباتن | بوابة دعم التجار والمبيعات</title>
+    
+    <!-- استدعاء خط Cairo من Google Fonts لوضوح القراءة باللغة العربية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة Tailwind CSS للتصميم المتجاوب والعصري -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- إعداد ألوان الهوية البصرية للشركة في Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#00594c',    // الأخضر الداكن الأساسي
+                            forest: '#007c09',  // الأخضر المتوسط الثانوي
+                            lime: '#98de63',    // الأخضر الفاتح المميز
+                            light: '#f1f8f4',   // خلفية خفيفة متناسقة
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        /* تخصيص شريط التمرير ليكون أنيقاً */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00594c;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #007c09;
+        }
+
+        /* تأثير نبض خفيف للأوقات الحمراء الإلزامية */
+        @keyframes pulseRed {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.2); }
+            50% { box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.08); }
+        }
+        .strict-slot-badge {
+            animation: pulseRed 2.5s infinite;
+        }
+
+        /* إخفاء شريط التمرير في أزرار الفلترة مع إبقاء التمرير فعالاً */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-brand-lime selection:text-brand-dark">
+
+    <!-- الهيدر الرئيسي بألوان الشركة -->
+    <header class="bg-gradient-to-l from-brand-dark via-[#006a2b] to-brand-forest text-white shadow-lg sticky top-0 z-40 border-b-4 border-brand-lime">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                
+                <!-- العنوان والوصف -->
+                <div class="flex items-start sm:items-center gap-3.5">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/15 backdrop-blur-sm border border-brand-lime/40 flex items-center justify-center shrink-0 shadow-inner">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">
+                                دليل مسارات وأوقات استلام الكباتن
+                            </h1>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-lime text-brand-dark shadow-sm">
+                                داخلي - للمبيعات والدعم
+                            </span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-emerald-100 mt-1 font-medium">
+                            نظام التحقق السريع من المسارات ومنع تعارض مواعيد استلام التجار الجدد
+                        </p>
+                    </div>
+                </div>
+
+                <!-- مفتاح الألوان وأزرار التحكم السريعة -->
+                <div class="flex flex-wrap items-center gap-2.5 sm:gap-3">
+                    <!-- دليل اللون الأحمر -->
+                    <div class="flex items-center gap-2 bg-red-950/60 border border-red-400/50 px-3 py-2 rounded-xl text-xs sm:text-sm">
+                        <span class="w-3 h-3 rounded-full bg-red-500 ring-2 ring-red-300 shrink-0"></span>
+                        <span class="font-semibold text-red-100">الأحمر: إلزامي غير قابل للتداخل</span>
+                    </div>
+
+                    <!-- زر دخول المشرف / قفل التعديل -->
+                    <button id="toggleEditModeBtn" onclick="handleAdminButtonClick()" class="flex items-center gap-2 bg-white/15 hover:bg-white/25 active:scale-95 transition-all border border-white/30 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-white shadow-sm cursor-pointer">
+                        <svg id="adminLockIcon" class="w-4 h-4 text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                        <span id="editModeLabel">دخول المشرف (تعديل)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- شريط أدوات المشرف (يظهر فقط بعد إدخال كلمة المرور) -->
+    <div id="editModeBanner" class="hidden bg-amber-50 border-b-2 border-amber-300 px-4 py-3.5 transition-all shadow-inner">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 text-sm">
+            <div class="flex items-center gap-2.5 text-amber-950">
+                <span class="p-2 bg-amber-200 rounded-xl text-amber-900 shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </span>
+                <div>
+                    <span class="font-extrabold">وضع المشرف مفعّل:</span>
+                    <span class="text-xs sm:text-sm text-amber-900">يمكنك إضافة كباتن جدد، تعديل أي اسم أو وقت أو منطقة، وتحديد الأوقات الحمراء.</span>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 w-full lg:w-auto justify-end">
+                <button onclick="openCaptainModal()" class="px-3.5 py-2 bg-brand-forest text-white rounded-xl text-xs font-extrabold hover:bg-brand-dark transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+                    <svg class="w-4 h-4 text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <span>إضافة كابتن جديد +</span>
+                </button>
+                <button onclick="downloadStandaloneHtml()" class="px-3.5 py-2 bg-brand-dark text-white rounded-xl text-xs font-extrabold hover:bg-emerald-900 transition shadow-xs flex items-center gap-1.5 cursor-pointer" title="تحميل ملف HTML جاهز للرفع أونلاين بكل تعديلاتك الحالية">
+                    <svg class="w-4 h-4 text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>تصدير نسخة HTML محدثة</span>
+                </button>
+                <button onclick="openPasswordChangeModal()" class="px-3 py-2 bg-white border border-amber-300 text-amber-950 rounded-xl text-xs font-bold hover:bg-amber-100 transition cursor-pointer">
+                    تغيير كلمة المرور
+                </button>
+                <button onclick="confirmResetData()" class="px-3 py-2 bg-white border border-slate-300 text-slate-700 rounded-xl text-xs font-bold hover:bg-slate-100 transition cursor-pointer">
+                    استعادة الافتراضي
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+        <!-- بطاقات الإحصائيات السريعة -->
+        <section class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex items-center justify-between">
+                <div>
+                    <p class="text-xs sm:text-sm font-semibold text-slate-500">إجمالي الكباتن</p>
+                    <p id="statTotalCaptains" class="text-2xl sm:text-3xl font-extrabold text-brand-dark mt-1">10</p>
+                </div>
+                <div class="w-11 h-11 rounded-xl bg-brand-light text-brand-dark flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex items-center justify-between">
+                <div>
+                    <p class="text-xs sm:text-sm font-semibold text-slate-500">نقاط الاستلام والمسارات</p>
+                    <p id="statTotalStops" class="text-2xl sm:text-3xl font-extrabold text-brand-forest mt-1">0</p>
+                </div>
+                <div class="w-11 h-11 rounded-xl bg-emerald-50 text-brand-forest flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-4 border border-red-200 shadow-sm flex items-center justify-between">
+                <div>
+                    <p class="text-xs sm:text-sm font-semibold text-red-600">أوقات إلزامية (حمراء)</p>
+                    <p id="statStrictSlots" class="text-2xl sm:text-3xl font-extrabold text-red-600 mt-1">0</p>
+                </div>
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-brand-dark to-brand-forest rounded-2xl p-4 text-white shadow-sm flex items-center justify-between">
+                <div>
+                    <p class="text-xs sm:text-sm font-semibold text-brand-lime">حالة النظام</p>
+                    <p class="text-base sm:text-lg font-extrabold mt-1">جاهز لفحص التعارض</p>
+                </div>
+                <div class="w-11 h-11 rounded-xl bg-white/15 text-brand-lime flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- لوحة البحث الذكي وفحص التعارض -->
+        <section class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-sm space-y-4">
+            <div class="flex flex-col md:flex-row gap-3">
+                <!-- حقل البحث الفوري -->
+                <div class="relative flex-1">
+                    <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        oninput="handleFilterChange()"
+                        placeholder="ابحث باسم المنطقة أو التاجر للتحقق من التعارض (مثال: زيونة، كرادة، حي أور، البياع، أبو غريب...)" 
+                        class="w-full pr-11 pl-10 py-3.5 bg-slate-50 border-2 border-slate-200 focus:border-brand-forest focus:bg-white rounded-xl text-sm sm:text-base font-medium text-slate-800 placeholder-slate-400 outline-none transition-all"
+                    >
+                    <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- زر فلترة الأوقات الحمراء فقط -->
+                <button 
+                    id="strictOnlyBtn" 
+                    onclick="toggleStrictOnly()"
+                    class="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl border-2 border-slate-200 bg-white hover:bg-red-50 hover:border-red-300 text-slate-700 font-bold text-sm transition-all shrink-0 cursor-pointer"
+                >
+                    <span class="w-3 h-3 rounded-full bg-red-600"></span>
+                    <span>الأوقات الإلزامية (الحمراء) فقط</span>
+                </button>
+            </div>
+
+            <!-- شريط الاختيار السريع للكباتن -->
+            <div class="pt-1">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-slate-500">تصفية حسب الكابتن:</span>
+                    <span id="activeFilterSummary" class="text-xs font-bold text-brand-forest">عرض جميع الكباتن (10)</span>
+                </div>
+                <div id="captainPillsContainer" class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+                    <!-- يتم توليد الأزرار ديناميكياً عبر JS -->
+                </div>
+            </div>
+
+            <!-- صندوق نتيجة فحص التعارض عند البحث -->
+            <div id="conflictCheckResult" class="hidden rounded-xl p-4 border transition-all">
+                <!-- يتم تعبئته تلقائياً عند البحث عن منطقة -->
+            </div>
+        </section>
+
+        <!-- شبكة جداول الكباتن -->
+        <section id="captainsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+            <!-- يتم توليد بطاقات وجداول الكباتن ديناميكياً عبر JS -->
+        </section>
+
+        <!-- رسالة في حال عدم وجود نتائج -->
+        <div id="emptyState" class="hidden bg-white rounded-2xl p-10 text-center border border-slate-200 shadow-sm">
+            <div class="w-16 h-16 bg-brand-light text-brand-dark rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-800">لا توجد مسارات مطابقة لبحثك</h3>
+            <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto">
+                هذا يعني أنه لا يوجد كابتن مجدول حالياً في هذه المنطقة ضمن الفلاتر المختارة، أو يمكنك البحث باسم منطقة مجاورة.
+            </p>
+            <button onclick="resetAllFilters()" class="mt-4 px-5 py-2.5 bg-brand-dark text-white rounded-xl text-sm font-bold hover:bg-brand-forest transition cursor-pointer">
+                إعادة عرض كافة الجداول
+            </button>
+        </div>
+
+    </main>
+
+    <!-- نافذة إضافة / تعديل موعد (Modal) -->
+    <div id="slotModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 id="modalTitle" class="text-lg font-extrabold text-brand-dark">إضافة موعد / مسار جديد</h3>
+                <button onclick="closeSlotModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <form id="slotForm" onsubmit="saveSlotForm(event)" class="space-y-4">
+                <input type="hidden" id="modalCaptainId">
+                <input type="hidden" id="modalSlotIndex">
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">الوقت (مثال: 7:30 م أو 9:00 م - 10:00 م)</label>
+                    <input type="text" id="modalTimeInput" required placeholder="أدخل الوقت..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:border-brand-forest focus:bg-white outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">المنطقة / اسم التاجر / المسار</label>
+                    <input type="text" id="modalAreaInput" required placeholder="أدخل اسم المنطقة أو التاجر..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:border-brand-forest focus:bg-white outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">ملاحظة إضافية (اختياري)</label>
+                    <input type="text" id="modalNoteInput" placeholder="مثال: التاجر يغلق الساعة 8 تماماً..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:border-brand-forest focus:bg-white outline-none">
+                </div>
+
+                <div class="p-3.5 rounded-xl border border-red-200 bg-red-50/70 flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-bold text-red-800">وقت إلزامي (باللون الأحمر)</p>
+                        <p class="text-xs text-red-600">غير قابل للتداخل مع تاجر آخر بنفس المسار</p>
+                    </div>
+                    <input type="checkbox" id="modalStrictInput" class="w-5 h-5 accent-red-600 rounded cursor-pointer">
+                </div>
+
+                <div class="flex items-center justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeSlotModal()" class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-sm font-bold hover:bg-slate-50 cursor-pointer">
+                        إلغاء
+                    </button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-brand-dark text-white text-sm font-bold hover:bg-brand-forest transition cursor-pointer">
+                        حفظ التغييرات
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة إضافة / تعديل بيانات كابتن -->
+    <div id="captainModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 id="captainModalTitle" class="text-lg font-extrabold text-brand-dark">إضافة كابتن جديد</h3>
+                <button onclick="closeCaptainModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <form id="captainForm" onsubmit="saveCaptainForm(event)" class="space-y-4">
+                <input type="hidden" id="editCaptainIdInput">
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">اسم الكابتن *</label>
+                    <input type="text" id="captainNameInput" required placeholder="مثال: مصطفى كريم..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:border-brand-forest focus:bg-white outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">وصف المسار / المناطق الرئيسية</label>
+                    <input type="text" id="captainRoleInput" placeholder="مثال: مسار المنصور والحارثية واليرموك..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:border-brand-forest focus:bg-white outline-none">
+                </div>
+
+                <div id="initialSlotSection" class="p-3.5 rounded-xl bg-brand-light border border-brand-forest/20 space-y-3">
+                    <p class="text-xs font-extrabold text-brand-dark">أول موعد في جدول الكابتن (اختياري):</p>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="text" id="captainFirstTimeInput" placeholder="الوقت (مثال: 5:00 م)" class="px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs outline-none focus:border-brand-forest">
+                        <input type="text" id="captainFirstAreaInput" placeholder="المنطقة / التاجر" class="px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs outline-none focus:border-brand-forest">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeCaptainModal()" class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-sm font-bold hover:bg-slate-50 cursor-pointer">
+                        إلغاء
+                    </button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-brand-dark text-white text-sm font-bold hover:bg-brand-forest transition cursor-pointer">
+                        حفظ الكابتن
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة كلمة مرور المشرف -->
+    <div id="adminAuthModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-lg bg-brand-light text-brand-dark flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </span>
+                    <h3 class="text-base font-extrabold text-brand-dark">تسجيل دخول المشرف</h3>
+                </div>
+                <button onclick="closeAdminAuthModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <form onsubmit="verifyAdminPassword(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">أدخل كلمة مرور الإدارة لفتح التعديل:</label>
+                    <input type="password" id="adminPasswordInput" required placeholder="••••" class="w-full px-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-lg tracking-widest font-extrabold focus:border-brand-forest focus:bg-white outline-none">
+                    <p id="adminAuthError" class="hidden text-xs font-bold text-red-600 mt-1.5 text-center">كلمة المرور غير صحيحة!</p>
+                    <p class="text-[11px] text-slate-400 mt-2 text-center">كلمة المرور الافتراضية هي: <span class="font-bold text-slate-600">1234</span> (يمكنك تغييرها بعد الدخول)</p>
+                </div>
+
+                <div class="flex items-center justify-end gap-2">
+                    <button type="button" onclick="closeAdminAuthModal()" class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-50 cursor-pointer">
+                        إلغاء
+                    </button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-brand-dark text-white text-xs font-extrabold hover:bg-brand-forest transition cursor-pointer">
+                        فتح وضع التعديل
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة تغيير كلمة المرور -->
+    <div id="changePasswordModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 class="text-base font-extrabold text-brand-dark">تغيير كلمة مرور المشرف</h3>
+                <button onclick="closePasswordChangeModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <form onsubmit="saveNewAdminPassword(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">كلمة المرور الجديدة:</label>
+                    <input type="text" id="newAdminPasswordInput" required minlength="3" placeholder="أدخل كلمة المرور الجديدة..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold focus:border-brand-forest focus:bg-white outline-none">
+                </div>
+                <div class="flex items-center justify-end gap-2">
+                    <button type="button" onclick="closePasswordChangeModal()" class="px-4 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-50 cursor-pointer">إلغاء</button>
+                    <button type="submit" class="px-4 py-2 rounded-xl bg-brand-dark text-white text-xs font-extrabold hover:bg-brand-forest cursor-pointer">حفظ كلمة المرور</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة تأكيد الحذف المخصصة (بدلاً من confirm) -->
+    <div id="confirmDeleteModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 space-y-4 text-center">
+            <div class="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+            </div>
+            <div>
+                <h3 id="confirmDeleteTitle" class="text-base font-extrabold text-slate-900">تأكيد الحذف</h3>
+                <p id="confirmDeleteDesc" class="text-xs text-slate-500 mt-1">هل أنت متأكد من رغبتك في تنفيذ هذا الإجراء؟</p>
+            </div>
+            <div class="flex items-center justify-center gap-2 pt-2">
+                <button onclick="closeConfirmDeleteModal()" class="px-4 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-50 cursor-pointer">إلغاء</button>
+                <button id="confirmDeleteActionBtn" class="px-4 py-2 rounded-xl bg-red-600 text-white text-xs font-extrabold hover:bg-red-700 cursor-pointer">نعم، احذف</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- صندوق إشعارات مخصص (Toast) بدلاً من alert() -->
+    <div id="toastNotification" class="fixed bottom-5 left-5 z-50 hidden transform transition-all duration-300">
+        <div class="bg-brand-dark text-white px-4 py-3 rounded-xl shadow-xl border border-brand-lime/40 flex items-center gap-3 text-sm font-bold">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-lime"></span>
+            <span id="toastMessage">تم الحفظ بنجاح</span>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="bg-white border-t border-slate-200 mt-10 py-5 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500 font-medium">
+            <p>بوابة مسارات وأوقات استلام الكباتن — مخصصة للاستخدام الداخلي (قسم دعم التجار والمبيعات)</p>
+            <p class="text-brand-dark font-bold">يُرجى التحقق من الأوقات الحمراء قبل تثبيت موعد أي تاجر جديد</p>
+        </div>
+    </footer>
+
+    <!-- المنطق البرمجي الكامل للتطبيق -->
+    <script>
+        // البيانات الأساسية المستخرجة بدقة من الجداول الورقية للكباتن العشرة
+        const DEFAULT_CAPTAINS_DATA = [
+            {
+                id: 'cap-1',
+                name: 'علي محمد',
+                role: 'مندوب استلام أبو غريب والصباحي 11',
+                slots: [
+                    { time: '10:00 ص', area: 'جيوان أبو غريب', strict: false, note: '' },
+                    { time: '12:00 م', area: 'ساحة الواثق', strict: false, note: '' },
+                    { time: '2:20 م', area: 'السعدون', strict: false, note: '' },
+                    { time: '3:00 م', area: 'الوزيرية + بيجان', strict: false, note: '' },
+                    { time: '5:00 م', area: 'رواجع شركة', strict: false, note: '' },
+                    { time: '6:30 م', area: 'حي الجامعة', strict: false, note: '' },
+                    { time: '7:00 م', area: 'غزالية', strict: false, note: '' },
+                    { time: '8:00 م', area: 'أبو غريب (1)', strict: false, note: '' },
+                    { time: '12:30 ص', area: 'الحرية', strict: false, note: '' },
+                    { time: '12:30 ص', area: 'حي الجامعة', strict: false, note: '' },
+                    { time: '1:30 ص', area: 'غزالية', strict: false, note: '' },
+                    { time: '2:00 ص', area: 'حرية', strict: false, note: '' },
+                    { time: '2:15 ص', area: 'تقفيلة (4)', strict: false, note: '' }
+                ]
+            },
+            {
+                id: 'cap-2',
+                name: 'أحمد جوكر',
+                role: 'خط الرصافة الوسطى والكرادة',
+                slots: [
+                    { time: '5:00 م', area: 'سحب رواجع', strict: false, note: '' },
+                    { time: '6:30 م', area: 'باب المعظم', strict: false, note: '' },
+                    { time: '7:00 م', area: 'شيخ عمر', strict: false, note: '' },
+                    { time: '7:30 م - 8:00 م', area: 'كرادة (سعدون / داخل)', strict: false, note: '' },
+                    { time: '9:00 م', area: 'جادرية', strict: false, note: '' },
+                    { time: '10:00 م', area: 'كرادة خارج', strict: false, note: '' },
+                    { time: '10:45 م', area: 'مجمع مشن', strict: false, note: '' },
+                    { time: '11:15 م', area: 'جلود', strict: false, note: '' },
+                    { time: '11:45 م', area: '42', strict: false, note: '' },
+                    { time: '12:00 ص', area: 'كرادة', strict: false, note: '' },
+                    { time: '1:00 ص', area: 'شورجة / متنبي / كراج الأمانة / الكفاح', strict: false, note: '' },
+                    { time: '2:00 ص', area: 'تقفيلة', strict: false, note: '' }
+                ]
+            },
+            {
+                id: 'cap-3',
+                name: 'عبد الوهاب',
+                role: 'خط الأعظمية والوزيرية والقاهرة',
+                slots: [
+                    { time: '3:30 م', area: 'سحب رواجع', strict: false, note: '' },
+                    { time: '4:30 م', area: 'حي تونس', strict: false, note: '' },
+                    { time: '5:00 م', area: 'سبع أبكار', strict: false, note: '' },
+                    { time: '7:00 م', area: 'الكريعات', strict: false, note: '' },
+                    { time: '8:00 م', area: 'الأعظمية', strict: false, note: '' },
+                    { time: '9:00 م', area: 'شارع المغرب', strict: false, note: '' },
+                    { time: '10:00 م', area: 'وزيرية', strict: false, note: '' },
+                    { time: '11:00 م', area: 'حي القاهرة', strict: false, note: '' },
+                    { time: '1:30 ص', area: 'تقفيلة', strict: false, note: '' }
+                ]
+            },
+            {
+                id: 'cap-4',
+                name: 'أحمد حسام',
+                role: 'خط الشعلة والغزالية والحرية',
+                slots: [
+                    { time: '4:30 م', area: 'بياع + دمشق', strict: false, note: '' },
+                    { time: '5:45 م', area: 'فترة مفتوحة / غير محدد', strict: false, note: '' },
+                    { time: '6:30 م', area: 'شركة سحب رواجع', strict: false, note: '' },
+                    { time: '8:00 م', area: 'جكوك', strict: false, note: '' },
+                    { time: '9:00 م', area: 'حي الجوادين', strict: false, note: '' },
+                    { time: '9:15 م', area: 'الرحمانية', strict: false, note: '' },
+                    { time: '9:30 م', area: 'خطيب الزراعي', strict: false, note: '' },
+                    { time: '9:45 م', area: 'الهياكل', strict: false, note: '' },
+                    { time: '10:00 م', area: 'غزالية', strict: false, note: '' },
+                    { time: '11:30 م', area: 'دولعي', strict: false, note: '' },
+                    { time: '12:00 ص', area: 'مران (ساعة واحدة شعلة + دوانم)', strict: false, note: '' },
+                    { time: '1:30 ص أو 2:00 ص', area: 'تقفيلة', strict: false, note: '' }
+                ]
+            },
+            {
+                id: 'cap-5',
+                name: 'علي أحمد حسن',
+                role: 'خط بغداد الجديدة والبلديات والمشتل',
+                slots: [
+                    { time: '4:45 م', area: 'سحب رواجع', strict: false, note: '' },
+                    { time: '5:30 م', area: 'بلديات', strict: false, note: '' },
+                    { time: '6:15 م', area: 'حي أور', strict: false, note: '' },
+                    { time: '8:00 م', area: 'بغداد الجديدة', strict: false, note: '' },
+                    { time: '9:30 م', area: 'التأميم الثانية', strict: false, note: '' },
+                    { time: '11:00 م', area: 'المشتل', strict: false, note: '' },
+                    { time: '12:00 ص', area: 'البلديات', strict: false, note: '' },
+                    { time: '2:00 ص', area: 'كمارة', strict: false, note: '' },
+                    { time: '2:30 ص أو 3:00 ص', area: 'تقفيلة', strict: false, note: '' }
+                ]
+            },
+            {
+                id: 'cap-6',
+                name: 'حسن ضياء',
+                role: 'خط زيونة وشارع فلسطين والطالبية',
+                slots: [
+                    { time: '6:00 م', area: 'سحب رواجع', strict: false, note: '' },
+                    { time: '7:00 م', area: 'شارع الظلال / شارع المطبعي', strict: false, note: '' },
+                    { time: '7:30 م', area: 'زيونة', strict: false, note: '' },
+                    { time: '9:30 م', area: 'شارع فلسطين', strict: false, note: '' },
+                    { time: '12:00 ص', area: 'طالبية', strict: false, note: '' },
+                    { time: '1:00 ص', area: 'حي أور', strict: false, note: '' },
+                    { time: '1:30 ص', area: 'شارع فلسطين', strict: false, note: '' },
+                    { time: '2:00 ص أو 2:30 ص', area: 'تقفيلة', strict: false, note: '' }
+                ]
+            },
+            {
+                id: 'cap-7',
+                name: 'جعفر محمد',
+                role: 'خط الشعب والحسينية والبنوك وحي أور',
+                slots: [
+                    { time: '4:30 م', area: 'سحب رواجع شركة', strict: false, note: '' },
+                    { time: '5:00 م', area: 'طالبية / بنوك', strict: false, note: '' },
+                    { time: '6:00 م', area: 'حي أور', strict: false, note: '' },
+                    { time: '7:00 م', area: 'شعب / س.ق', strict: false, note: '' },
+                    { time: '8:00 م', area: 'الثعالية / بوب الشام', strict: false, note: '' },
+                    { time: '8:30 م', area: 'الحسينية', strict: false, note: '' },
+                    { time: '8:30 م', area: 'الجزيرة الفحامة', strict: false, note: '' },
+                    { time: '9:30 م', area: 'كميرة الحريرات', strict: false, note: '' },
+                    { time: '9:30 م', area: 'السريدات / حي البساتين', strict: false, note: '' },
+                    { time: '10:30 م', area: 'فترة مفتوحة / غير محدد', strict: false, note: '' },
+                    { time: '11:30 م', area: 'النصر / شارع التجار / شارع الأسواق', strict: false, note: '' },
+                    { time: '12:00 ص', area: 'شارع عدن / شارع الصحة / العسكري', strict: false, note: '' },
+                    { time: '1:00 ص', area: 'حي أور / بنوك / طالبية', strict: false, note: '' },
+                    { time: '1:30 ص', area: 'تقفيلة', strict: false, note: '' }
+                ]
+            },
+            {
+                id: 'cap-8',
+                name: 'أنمار حسين',
+                role: 'خط المحمودية والرشيد والدورة',
+                slots: [
+                    { time: '5:00 م', area: 'المحمودية', strict: false, note: '' },
+                    { time: '7:00 م', area: 'القصر الأوسط', strict: false, note: '' },
+                    { time: '9:00 م', area: 'ناحية الرشيد', strict: false, note: '' },
+                    { time: '9:30 م - 11:00 م', area: 'جكوك', strict: false, note: '' },
+                    { time: '12:00 ص', area: 'الدورة', strict: false, note: '' },
+                    { time: '1:00 ص أو 1:30 ص', area: 'تقفيلة', strict: false, note: '' },
+                    { time: '2:00 ص', area: 'استلام رواجع', strict: false, note: '' }
+                ]
+            },
+            {
+                id: 'cap-9',
+                name: 'كرم مصري',
+                role: 'خط السيدية والإعلام والبياع',
+                slots: [
+                    { time: '4:00 م', area: 'فترة مفتوحة / غير محدد', strict: false, note: '' },
+                    { time: '5:30 م', area: 'سحب رواجع', strict: false, note: '' },
+                    { time: '7:00 م', area: 'شهداء السيدية', strict: false, note: '' },
+                    { time: '7:30 م', area: 'كفاءات السيدية', strict: false, note: '' },
+                    { time: '8:00 م', area: 'الإعلام', strict: false, note: '' },
+                    { time: '9:00 م أو 9:30 م', area: 'السيدية', strict: false, note: '' },
+                    { time: '10:00 م إلى 11:00 م', area: 'بياع / حي الرسالة', strict: false, note: '' },
+                    { time: '12:30 ص إلى 1:00 ص', area: 'كفاءات السيدية', strict: false, note: '' },
+                    { time: '1:30 ص', area: 'دعم', strict: false, note: '' },
+                    { time: '1:50 ص', area: 'حي العامل', strict: false, note: '' },
+                    { time: '2:15 ص', area: 'تقفيلة + دعم ليمونة بيع', strict: false, note: '' }
+                ]
+            },
+            {
+                id: 'cap-10',
+                name: 'سجاد حموده',
+                role: 'خط البياع وحي العامل والجهاد',
+                slots: [
+                    { time: '5:00 م', area: 'سحب رواجع', strict: false, note: '' },
+                    { time: '6:30 م', area: 'حي الحسين', strict: false, note: '' },
+                    { time: '8:00 م', area: 'شهداء البياع', strict: false, note: '' },
+                    { time: '9:00 م', area: 'شرطة الرابعة + المواصلات', strict: false, note: '' },
+                    { time: '10:00 م', area: 'حي العامل', strict: false, note: '' },
+                    { time: '11:00 م', area: 'حي الجهاد', strict: false, note: '' },
+                    { time: '1:00 ص', area: 'المواصلات + الشاعلة', strict: false, note: '' },
+                    { time: '1:30 ص أو 2:00 ص', area: 'تقفيلة', strict: false, note: '' }
+                ]
+            }
+        ];
+
+        // حالة التطبيق
+        const STORAGE_KEY = 'company_captains_routes_v2';
+        const ADMIN_PASS_KEY = 'company_captains_admin_pass_v2';
+        const DEFAULT_ADMIN_PASS = '1234';
+        let captainsData = [];
+        let selectedCaptainId = 'all';
+        let strictOnlyFilter = false;
+        let isEditMode = false;
+        let pendingDeleteAction = null;
+
+        // تهيئة البيانات عند تحميل الصفحة
+        function initApp() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    captainsData = JSON.parse(saved);
+                } else {
+                    captainsData = JSON.parse(JSON.stringify(DEFAULT_CAPTAINS_DATA));
+                }
+            } catch (e) {
+                captainsData = JSON.parse(JSON.stringify(DEFAULT_CAPTAINS_DATA));
+            }
+            renderCaptainPills();
+            renderAll();
+        }
+
+        function getAdminPassword() {
+            return localStorage.getItem(ADMIN_PASS_KEY) || DEFAULT_ADMIN_PASS;
+        }
+            } catch (e) {
+                captainsData = JSON.parse(JSON.stringify(DEFAULT_CAPTAINS_DATA));
+            }
+            renderCaptainPills();
+            renderAll();
+        }
+
+        // حفظ البيانات في التخزين المحلي
+        function saveToStorage() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(captainsData));
+            } catch (e) {
+                console.error('Error saving to localStorage', e);
+            }
+        }
+
+        // توحيد الحروف العربية لتسهيل البحث الدقيق (مثلاً: أ / إ / آ -> ا ، ة -> ه)
+        function normalizeArabic(text) {
+            if (!text) return '';
+            return text
+                .toString()
+                .toLowerCase()
+                .replace(/[أإآ]/g, 'ا')
+                .replace(/ة/g, 'ه')
+                .replace(/ى/g, 'ي')
+                .replace(/[\u064B-\u065F]/g, '') // إزالة التشكيل
+                .trim();
+        }
+
+        // تحديث الإحصائيات العلوية
+        function updateStats() {
+            const totalCaptains = captainsData.length;
+            let totalStops = 0;
+            let strictSlots = 0;
+
+            captainsData.forEach(cap => {
+                totalStops += cap.slots.length;
+                cap.slots.forEach(slot => {
+                    if (slot.strict) strictSlots++;
+                });
+            });
+
+            document.getElementById('statTotalCaptains').textContent = totalCaptains;
+            document.getElementById('statTotalStops').textContent = totalStops;
+            document.getElementById('statStrictSlots').textContent = strictSlots;
+        }
+
+        // رسم أزرار الفلترة السريعة للكباتن
+        function renderCaptainPills() {
+            const container = document.getElementById('captainPillsContainer');
+            let html = `
+                <button onclick="selectCaptain('all')" 
+                    class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all cursor-pointer ${
+                        selectedCaptainId === 'all' 
+                        ? 'bg-brand-dark text-white shadow-sm ring-2 ring-brand-lime' 
+                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    }">
+                    جميع الكباتن (${captainsData.length})
+                </button>
+            `;
+
+            captainsData.forEach(cap => {
+                const isSelected = selectedCaptainId === cap.id;
+                const strictCount = cap.slots.filter(s => s.strict).length;
+                html += `
+                    <button onclick="selectCaptain('${cap.id}')" 
+                        class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
+                            isSelected 
+                            ? 'bg-brand-forest text-white shadow-sm ring-2 ring-brand-lime' 
+                            : 'bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-brand-dark'
+                        }">
+                        <span>${cap.name}</span>
+                        ${strictCount > 0 ? `<span class="w-2 h-2 rounded-full bg-red-500" title="يوجد ${strictCount} مواعيد حمراء"></span>` : ''}
+                    </button>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // اختيار كابتن محدد
+        function selectCaptain(id) {
+            selectedCaptainId = id;
+            renderCaptainPills();
+            renderAll();
+        }
+
+        // تفعيل/إلغاء فلتر الأوقات الحمراء فقط
+        function toggleStrictOnly() {
+            strictOnlyFilter = !strictOnlyFilter;
+            const btn = document.getElementById('strictOnlyBtn');
+            if (strictOnlyFilter) {
+                btn.className = 'flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl border-2 border-red-600 bg-red-600 text-white font-bold text-sm transition-all shrink-0 shadow-sm cursor-pointer';
+                btn.innerHTML = `<span class="w-3 h-3 rounded-full bg-white"></span><span>عرض الأوقات الحمراء فقط ✓</span>`;
+            } else {
+                btn.className = 'flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl border-2 border-slate-200 bg-white hover:bg-red-50 hover:border-red-300 text-slate-700 font-bold text-sm transition-all shrink-0 cursor-pointer';
+                btn.innerHTML = `<span class="w-3 h-3 rounded-full bg-red-600"></span><span>الأوقات الإلزامية (الحمراء) فقط</span>`;
+            }
+            renderAll();
+        }
+
+        // معالجة الكتابة في حقل البحث
+        function handleFilterChange() {
+            const val = document.getElementById('searchInput').value;
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (val.trim().length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+            renderAll();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            renderAll();
+        }
+
+        function resetAllFilters() {
+            selectedCaptainId = 'all';
+            strictOnlyFilter = false;
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            
+            const btn = document.getElementById('strictOnlyBtn');
+            btn.className = 'flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl border-2 border-slate-200 bg-white hover:bg-red-50 hover:border-red-300 text-slate-700 font-bold text-sm transition-all shrink-0 cursor-pointer';
+            btn.innerHTML = `<span class="w-3 h-3 rounded-full bg-red-600"></span><span>الأوقات الإلزامية (الحمراء) فقط</span>`;
+            
+            renderCaptainPills();
+            renderAll();
+        }
+
+        // تمييز نص البحث داخل النتائج
+        function highlightText(text, rawQuery) {
+            if (!rawQuery || !rawQuery.trim()) return text;
+            const escaped = rawQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escaped})`, 'gi');
+            return text.replace(regex, '<mark class="bg-brand-lime/60 text-brand-dark font-extrabold px-1 rounded">$1</mark>');
+        }
+
+        // العرض الرئيسي للجداول ونتائج فحص التعارض
+        function renderAll() {
+            updateStats();
+
+            const rawQuery = document.getElementById('searchInput').value;
+            const query = normalizeArabic(rawQuery);
+            const grid = document.getElementById('captainsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const conflictBox = document.getElementById('conflictCheckResult');
+            const filterSummary = document.getElementById('activeFilterSummary');
+
+            let visibleCaptainsCount = 0;
+            let totalMatchedSlots = 0;
+            let matchedStrictSlots = 0;
+            let matchedCaptainsNames = new Set();
+
+            let cardsHtml = '';
+
+            captainsData.forEach(captain => {
+                // فلترة حسب الكابتن المختار
+                if (selectedCaptainId !== 'all' && captain.id !== selectedCaptainId) {
+                    return;
+                }
+
+                const captainNameNorm = normalizeArabic(captain.name);
+                const isCaptainNameMatch = query && captainNameNorm.includes(query);
+
+                // فلترة المواعيد داخل الكابتن
+                const filteredSlots = captain.slots.map((slot, index) => ({ ...slot, originalIndex: index })).filter(slot => {
+                    if (strictOnlyFilter && !slot.strict) return false;
+                    if (!query) return true;
+                    if (isCaptainNameMatch) return true;
+
+                    const areaNorm = normalizeArabic(slot.area);
+                    const timeNorm = normalizeArabic(slot.time);
+                    const noteNorm = normalizeArabic(slot.note || '');
+                    return areaNorm.includes(query) || timeNorm.includes(query) || noteNorm.includes(query);
+                });
+
+                if (filteredSlots.length === 0) {
+                    return;
+                }
+
+                visibleCaptainsCount++;
+                totalMatchedSlots += filteredSlots.length;
+                filteredSlots.forEach(s => {
+                    if (s.strict) matchedStrictSlots++;
+                    matchedCaptainsNames.add(captain.name);
+                });
+
+                const strictCountForCap = captain.slots.filter(s => s.strict).length;
+
+                cardsHtml += `
+                    <article class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-all flex flex-col overflow-hidden">
+                        <!-- رأس بطاقة الكابتن -->
+                        <div class="bg-gradient-to-l from-brand-dark to-brand-forest px-4 py-3.5 text-white flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <div class="w-10 h-10 rounded-xl bg-white/15 border border-brand-lime/40 flex items-center justify-center font-extrabold text-brand-lime text-base shrink-0">
+                                    ${captain.name.charAt(0)}
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="flex items-center gap-1.5">
+                                        <h2 class="text-base sm:text-lg font-extrabold truncate">
+                                            ${highlightText(captain.name, rawQuery)}
+                                        </h2>
+                                        ${isEditMode ? `
+                                            <button onclick="openCaptainModal('${captain.id}')" title="تعديل اسم الكابتن أو مساره" class="p-1 rounded-lg bg-white/15 hover:bg-white/30 text-brand-lime transition cursor-pointer shrink-0">
+                                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                                                </svg>
+                                            </button>
+                                        ` : ''}
+                                    </div>
+                                    <p class="text-xs text-emerald-100 truncate">
+                                        ${captain.role || 'خط استلام التجار'}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1.5 shrink-0">
+                                ${strictCountForCap > 0 ? `
+                                    <span class="px-2 py-1 rounded-lg bg-red-600 text-white text-xs font-extrabold shadow-xs" title="عدد الأوقات الحمراء غير القابلة للتداخل">
+                                        ${strictCountForCap} إلزامي
+                                    </span>
+                                ` : ''}
+                                <span class="px-2 py-1 rounded-lg bg-white/15 text-brand-lime text-xs font-bold">
+                                    ${filteredSlots.length} محطة
+                                </span>
+                                ${isEditMode ? `
+                                    <button onclick="requestDeleteCaptain('${captain.id}')" title="حذف الكابتن بالكامل" class="p-1.5 rounded-lg bg-red-500/80 hover:bg-red-600 text-white transition cursor-pointer">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </button>
+                                ` : ''}
+                            </div>
+                        </div>
+
+                        <!-- جدول الأوقات والمسارات -->
+                        <div class="flex-1 overflow-x-auto">
+                            <table class="w-full text-right border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-50 border-b border-slate-200 text-xs font-extrabold text-slate-500">
+                                        <th class="py-2.5 px-3.5 w-32 sm:w-36">وقت الدخول</th>
+                                        <th class="py-2.5 px-3.5">المنطقة / التاجر</th>
+                                        ${isEditMode ? '<th class="py-2.5 px-2 text-center w-28">إجراء</th>' : ''}
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 text-xs sm:text-sm">
+                                    ${filteredSlots.map(slot => {
+                                        const isStrict = slot.strict;
+                                        return `
+                                            <tr class="transition-colors ${
+                                                isStrict 
+                                                ? 'bg-red-50/90 hover:bg-red-100/80 text-red-950' 
+                                                : 'hover:bg-brand-light/60 text-slate-800'
+                                            }">
+                                                <!-- عمود الوقت -->
+                                                <td class="py-2.5 px-3.5 font-extrabold whitespace-nowrap align-top">
+                                                    <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg ${
+                                                        isStrict 
+                                                        ? 'bg-red-600 text-white strict-slot-badge' 
+                                                        : 'bg-brand-light text-brand-dark border border-brand-forest/20'
+                                                    }">
+                                                        <span>${highlightText(slot.time, rawQuery)}</span>
+                                                    </div>
+                                                </td>
+
+                                                <!-- عمود المنطقة والتاجر -->
+                                                <td class="py-2.5 px-3.5 font-bold align-top">
+                                                    <div class="flex items-start justify-between gap-2">
+                                                        <div>
+                                                            <span class="${isStrict ? 'text-red-900 font-extrabold' : 'text-slate-800'}">
+                                                                ${highlightText(slot.area, rawQuery)}
+                                                            </span>
+                                                            ${isStrict ? `
+                                                                <span class="inline-block mr-1.5 px-1.5 py-0.2 bg-red-200 text-red-900 rounded text-[11px] font-extrabold">
+                                                                    غير قابل للتداخل
+                                                                </span>
+                                                            ` : ''}
+                                                            ${slot.note ? `
+                                                                <p class="text-xs font-medium mt-0.5 ${isStrict ? 'text-red-700' : 'text-slate-500'}">
+                                                                    ملاحظة: ${highlightText(slot.note, rawQuery)}
+                                                                </p>
+                                                            ` : ''}
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                <!-- أزرار التحكم في وضع التعديل -->
+                                                ${isEditMode ? `
+                                                    <td class="py-2 px-2 text-center align-top whitespace-nowrap">
+                                                        <div class="flex items-center justify-center gap-1">
+                                                            <button onclick="toggleSlotStrict('${captain.id}', ${slot.originalIndex})" 
+                                                                title="${isStrict ? 'تحويل إلى وقت عادي' : 'تحديد كوقت أحمر إلزامي'}"
+                                                                class="px-2 py-1 rounded-lg text-[11px] font-extrabold transition cursor-pointer ${
+                                                                    isStrict 
+                                                                    ? 'bg-slate-200 text-slate-800 hover:bg-slate-300' 
+                                                                    : 'bg-red-600 text-white hover:bg-red-700'
+                                                                }">
+                                                                ${isStrict ? 'إلغاء' : 'أحمر'}
+                                                            </button>
+                                                            <button onclick="openEditSlotModal('${captain.id}', ${slot.originalIndex})" 
+                                                                title="تعديل الوقت أو المنطقة"
+                                                                class="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 cursor-pointer">
+                                                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                                                                </svg>
+                                                            </button>
+                                                            <button onclick="requestDeleteSlot('${captain.id}', ${slot.originalIndex})" 
+                                                                title="حذف هذا الموعد"
+                                                                class="p-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 cursor-pointer">
+                                                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                ` : ''}
+                                            </tr>
+                                        `;
+                                    }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+        // التحكم بزر المشرف وقفل الحماية
+        function handleAdminButtonClick() {
+            if (isEditMode) {
+                setEditMode(false);
+                showToast('تم قفل وضع التعديل والعودة لوضع العرض المحمي');
+            } else {
+                document.getElementById('adminPasswordInput').value = '';
+                document.getElementById('adminAuthError').classList.add('hidden');
+                document.getElementById('adminAuthModal').classList.remove('hidden');
+                setTimeout(() => document.getElementById('adminPasswordInput').focus(), 100);
+            }
+        }
+
+        function closeAdminAuthModal() {
+            document.getElementById('adminAuthModal').classList.add('hidden');
+        }
+
+        function verifyAdminPassword(e) {
+            e.preventDefault();
+            const entered = document.getElementById('adminPasswordInput').value.trim();
+            if (entered === getAdminPassword()) {
+                closeAdminAuthModal();
+                setEditMode(true);
+                showToast('تم فتح وضع المشرف! يمكنك الآن الإضافة والتعديل بحرية.');
+            } else {
+                document.getElementById('adminAuthError').classList.remove('hidden');
+            }
+        }
+
+        function setEditMode(active) {
+            isEditMode = active;
+            const banner = document.getElementById('editModeBanner');
+            const label = document.getElementById('editModeLabel');
+            const btn = document.getElementById('toggleEditModeBtn');
+            const lockIcon = document.getElementById('adminLockIcon');
+
+            if (isEditMode) {
+                banner.classList.remove('hidden');
+                label.textContent = 'قفل والخروج من التعديل';
+                btn.classList.add('bg-brand-lime', 'text-brand-dark', 'border-brand-lime');
+                btn.classList.remove('bg-white/15', 'text-white');
+                lockIcon.classList.remove('text-brand-lime');
+                lockIcon.classList.add('text-brand-dark');
+                lockIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"></path>`;
+            } else {
+                banner.classList.add('hidden');
+                label.textContent = 'دخول المشرف (تعديل)';
+                btn.classList.remove('bg-brand-lime', 'text-brand-dark', 'border-brand-lime');
+                btn.classList.add('bg-white/15', 'text-white');
+                lockIcon.classList.add('text-brand-lime');
+                lockIcon.classList.remove('text-brand-dark');
+                lockIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>`;
+            }
+            renderAll();
+        }
+
+        // تغيير كلمة مرور المشرف
+        function openPasswordChangeModal() {
+            document.getElementById('newAdminPasswordInput').value = getAdminPassword();
+            document.getElementById('changePasswordModal').classList.remove('hidden');
+        }
+
+        function closePasswordChangeModal() {
+            document.getElementById('changePasswordModal').classList.add('hidden');
+        }
+
+        function saveNewAdminPassword(e) {
+            e.preventDefault();
+            const newPass = document.getElementById('newAdminPasswordInput').value.trim();
+            if (newPass.length >= 3) {
+                localStorage.setItem(ADMIN_PASS_KEY, newPass);
+                closePasswordChangeModal();
+                showToast('تم تحديث كلمة مرور المشرف بنجاح');
+            }
+        }
+
+        // إدارة إضافة وتعديل وحذف الكباتن
+        function openCaptainModal(captainId = '') {
+            const titleEl = document.getElementById('captainModalTitle');
+            const idInput = document.getElementById('editCaptainIdInput');
+            const nameInput = document.getElementById('captainNameInput');
+            const roleInput = document.getElementById('captainRoleInput');
+            const initSlotSection = document.getElementById('initialSlotSection');
+
+            if (captainId) {
+                const cap = captainsData.find(c => c.id === captainId);
+                if (!cap) return;
+                titleEl.textContent = `تعديل بيانات الكابتن — ${cap.name}`;
+                idInput.value = cap.id;
+                nameInput.value = cap.name;
+                roleInput.value = cap.role || '';
+                initSlotSection.classList.add('hidden');
+            } else {
+                titleEl.textContent = 'إضافة كابتن جديد إلى النظام';
+                idInput.value = '';
+                nameInput.value = '';
+                roleInput.value = '';
+                document.getElementById('captainFirstTimeInput').value = '';
+                document.getElementById('captainFirstAreaInput').value = '';
+                initSlotSection.classList.remove('hidden');
+            }
+
+            document.getElementById('captainModal').classList.remove('hidden');
+        }
+
+        function closeCaptainModal() {
+            document.getElementById('captainModal').classList.add('hidden');
+        }
+
+        function saveCaptainForm(e) {
+            e.preventDefault();
+            const editId = document.getElementById('editCaptainIdInput').value;
+            const name = document.getElementById('captainNameInput').value.trim();
+            const role = document.getElementById('captainRoleInput').value.trim() || 'خط استلام التجار';
+
+            if (!name) return;
+
+            if (editId) {
+                const cap = captainsData.find(c => c.id === editId);
+                if (cap) {
+                    cap.name = name;
+                    cap.role = role;
+                    showToast(`تم تحديث بيانات الكابتن (${name}) بنجاح`);
+                }
+            } else {
+                const firstTime = document.getElementById('captainFirstTimeInput').value.trim();
+                const firstArea = document.getElementById('captainFirstAreaInput').value.trim();
+                const initialSlots = [];
+                if (firstTime || firstArea) {
+                    initialSlots.push({
+                        time: firstTime || '5:00 م',
+                        area: firstArea || 'بداية المسار',
+                        strict: false,
+                        note: ''
+                    });
+                }
+                const newCap = {
+                    id: 'cap-' + Date.now(),
+                    name,
+                    role,
+                    slots: initialSlots
+                };
+                captainsData.push(newCap);
+                selectedCaptainId = newCap.id;
+                showToast(`تمت إضافة الكابتن الجديد (${name}) بنجاح!`);
+            }
+
+            saveToStorage();
+            closeCaptainModal();
+            renderCaptainPills();
+            renderAll();
+        }
+
+        function requestDeleteCaptain(captainId) {
+            const cap = captainsData.find(c => c.id === captainId);
+            if (!cap) return;
+
+            document.getElementById('confirmDeleteTitle').textContent = `حذف الكابتن (${cap.name})؟`;
+            document.getElementById('confirmDeleteDesc').textContent = 'سيتم حذف بطاقة الكابتن وجميع مواعيده ومساراته نهائياً.';
+            pendingDeleteAction = () => {
+                captainsData = captainsData.filter(c => c.id !== captainId);
+                if (selectedCaptainId === captainId) selectedCaptainId = 'all';
+                saveToStorage();
+                renderCaptainPills();
+                renderAll();
+                showToast(`تم حذف الكابتن (${cap.name})`);
+            };
+            document.getElementById('confirmDeleteModal').classList.remove('hidden');
+        }
+
+        function requestDeleteSlot(captainId, slotIndex) {
+            const cap = captainsData.find(c => c.id === captainId);
+            if (!cap || !cap.slots[slotIndex]) return;
+            const slot = cap.slots[slotIndex];
+
+            document.getElementById('confirmDeleteTitle').textContent = 'حذف هذا الموعد؟';
+            document.getElementById('confirmDeleteDesc').textContent = `سيتم حذف (${slot.area} - ${slot.time}) من جدول الكابتن ${cap.name}.`;
+            pendingDeleteAction = () => {
+                cap.slots.splice(slotIndex, 1);
+                saveToStorage();
+                renderCaptainPills();
+                renderAll();
+                showToast('تم حذف الموعد بنجاح');
+            };
+            document.getElementById('confirmDeleteModal').classList.remove('hidden');
+        }
+
+        function closeConfirmDeleteModal() {
+            document.getElementById('confirmDeleteModal').classList.add('hidden');
+            pendingDeleteAction = null;
+        }
+
+        document.getElementById('confirmDeleteActionBtn').addEventListener('click', () => {
+            if (typeof pendingDeleteAction === 'function') {
+                pendingDeleteAction();
+            }
+            closeConfirmDeleteModal();
+        });
+
+        // تصدير نسخة HTML مستقلة محدثة بجميع التعديلات لرفعها أونلاين
+        function downloadStandaloneHtml() {
+            const currentDocHtml = document.documentElement.outerHTML;
+            const updatedDataLiteral = `const DEFAULT_CAPTAINS_DATA = ${JSON.stringify(captainsData, null, 12)};`;
+            const updatedPassLiteral = `const DEFAULT_ADMIN_PASS = ${JSON.stringify(getAdminPassword())};`;
+
+            let exportedHtml = currentDocHtml
+                .replace(/const DEFAULT_CAPTAINS_DATA = \[[\s\S]*?\];/, updatedDataLiteral)
+                .replace(/const DEFAULT_ADMIN_PASS = ['"][^'"]*['"];/, updatedPassLiteral);
+
+            const blob = new Blob(['<!DOCTYPE html>\n' + exportedHtml], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showToast('تم تحميل ملف (index.html) المحدث بجميع تعديلاتك وجاهز للرفع أونلاين!');
+        }
+
+        // تبديل حالة الموعد (أحمر إلزامي / عادي) بضغطة واحدة
+        function toggleSlotStrict(captainId, slotIndex) {
+            const cap = captainsData.find(c => c.id === captainId);
+            if (!cap || !cap.slots[slotIndex]) return;
+
+            cap.slots[slotIndex].strict = !cap.slots[slotIndex].strict;
+            saveToStorage();
+            renderCaptainPills();
+            renderAll();
+
+            const statusMsg = cap.slots[slotIndex].strict 
+                ? `تم تحديد (${cap.slots[slotIndex].area}) باللون الأحمر كوقت إلزامي`
+                : `تمت إعادة (${cap.slots[slotIndex].area}) إلى الحالة العادية`;
+            showToast(statusMsg);
+        }
+
+        // فتح نافذة تعديل موعد موجود
+        function openEditSlotModal(captainId, slotIndex) {
+            const cap = captainsData.find(c => c.id === captainId);
+            if (!cap || !cap.slots[slotIndex]) return;
+            const slot = cap.slots[slotIndex];
+
+            document.getElementById('modalTitle').textContent = `تعديل موعد — كابتن ${cap.name}`;
+            document.getElementById('modalCaptainId').value = captainId;
+            document.getElementById('modalSlotIndex').value = slotIndex;
+            document.getElementById('modalTimeInput').value = slot.time;
+            document.getElementById('modalAreaInput').value = slot.area;
+            document.getElementById('modalNoteInput').value = slot.note || '';
+            document.getElementById('modalStrictInput').checked = !!slot.strict;
+
+            document.getElementById('slotModal').classList.remove('hidden');
+        }
+
+        // فتح نافذة إضافة موعد جديد
+        function openAddSlotModal(captainId) {
+            const cap = captainsData.find(c => c.id === captainId);
+            if (!cap) return;
+
+            document.getElementById('modalTitle').textContent = `إضافة موعد جديد — كابتن ${cap.name}`;
+            document.getElementById('modalCaptainId').value = captainId;
+            document.getElementById('modalSlotIndex').value = '-1';
+            document.getElementById('modalTimeInput').value = '';
+            document.getElementById('modalAreaInput').value = '';
+            document.getElementById('modalNoteInput').value = '';
+            document.getElementById('modalStrictInput').checked = false;
+
+            document.getElementById('slotModal').classList.remove('hidden');
+        }
+
+        function closeSlotModal() {
+            document.getElementById('slotModal').classList.add('hidden');
+        }
+
+        // حفظ التعديل أو الإضافة من النافذة
+        function saveSlotForm(e) {
+            e.preventDefault();
+            const captainId = document.getElementById('modalCaptainId').value;
+            const slotIndex = parseInt(document.getElementById('modalSlotIndex').value, 10);
+            const time = document.getElementById('modalTimeInput').value.trim();
+            const area = document.getElementById('modalAreaInput').value.trim();
+            const note = document.getElementById('modalNoteInput').value.trim();
+            const strict = document.getElementById('modalStrictInput').checked;
+
+            const cap = captainsData.find(c => c.id === captainId);
+            if (!cap) return;
+
+            if (slotIndex === -1) {
+                cap.slots.push({ time, area, note, strict });
+                showToast('تمت إضافة الموعد الجديد بنجاح');
+            } else if (cap.slots[slotIndex]) {
+                cap.slots[slotIndex] = { time, area, note, strict };
+                showToast('تم تحديث بيانات الموعد بنجاح');
+            }
+
+            saveToStorage();
+            closeSlotModal();
+            renderCaptainPills();
+            renderAll();
+        }
+
+        // نسخ البيانات المحدثة إلى الحافظة لمشاركتها أو حفظها بشكل دائم
+        function exportDataJson() {
+            const jsonStr = JSON.stringify(captainsData, null, 2);
+            const tempInput = document.createElement('textarea');
+            tempInput.value = jsonStr;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast('تم نسخ البيانات المحدثة إلى الحافظة! يمكنك إرسالها لي لتثبيتها في الكود الدائم.');
+        }
+
+        // استعادة البيانات الافتراضية
+        function confirmResetData() {
+            captainsData = JSON.parse(JSON.stringify(DEFAULT_CAPTAINS_DATA));
+            saveToStorage();
+            renderCaptainPills();
+            renderAll();
+            showToast('تمت استعادة الجدول الأساسي بنجاح');
+        }
+
+        // إظهار رسالة إشعار أنيقة
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            const msgEl = document.getElementById('toastMessage');
+            msgEl.textContent = message;
+            toast.classList.remove('hidden');
+            
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+
+        // تشغيل التطبيق عند اكتمال تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
